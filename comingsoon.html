@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaChess - Coming Soon | Competitive Chess Platform</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="MetaChess - Pure chess platform for competitive play. Real-time matches, deep analysis, custom modes. Release launching February 2026. First 100 get 12 MONTHS PRO.">
+    <meta name="keywords" content="chess, online chess, competitive chess, chess platform, chess analysis, stockfish, chess modes, metachess">
+    <meta name="author" content="Hollow Software">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://metachess.org/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://metachess.org/">
+    <meta property="og:title" content="MetaChess - Competitive Chess Platform">
+    <meta property="og:description" content="Pure chess. Built for competitive play. Real-time matches, deep analysis, custom modes. Release launching February 2026.">
+    <meta property="og:image" content="https://metachess.org/web-app-manifest-512x512.png">
+    <meta property="og:site_name" content="MetaChess">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://metachess.org/">
+    <meta property="twitter:title" content="MetaChess - Competitive Chess Platform">
+    <meta property="twitter:description" content="Pure chess. Built for competitive play. Real-time matches, deep analysis, custom modes.">
+    <meta property="twitter:image" content="https://metachess.org/web-app-manifest-512x512.png">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="#0f0e0d">
+    <meta name="theme-color" content="#0f0e0d">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MetaChess",
+      "description": "Competitive chess platform for online play, analysis, and custom game modes",
+      "url": "https://metachess.org/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Hollow Software"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://metachess.org/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <meta http-equiv="Content-Security-Policy"
+          content="
+          default-src 'self';
+          script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;
+          style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+          font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+          img-src 'self' data: https:;
+          ">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#60a5fa',
+                            DEFAULT: '#3b82f6',
+                            dark: '#2563eb',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-body: #0f0e0d;
+            --bg-panel: #1a1918;
+            --border-light: rgba(255, 255, 255, 0.06);
+            --accent-blue: #3b82f6;
+        }
+        
+        body {
+            background-color: var(--bg-body);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .gradient-bg {
+            background: radial-gradient(circle at center, #161514 0%, #0f0e0d 100%);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+            border-color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative gradient-bg">
+
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-1/4 left-1/2 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    </div>
+
+    <main class="w-full max-w-3xl p-6 mx-auto text-center z-10 animate-fade-in">
+        
+        <div class="mb-8">
+            <h1 class="text-4xl md:text-6xl font-display font-black tracking-wider text-white mb-2">
+                META<span class="text-brand">CHESS</span>
+            </h1>
+            <p class="text-gray-400 text-sm tracking-[0.3em] uppercase font-semibold">HOLLOW SOFTWARE</p>
+        </div>
+
+        <div class="panel rounded-2xl p-8 md:p-12 shadow-2xl">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-white">Modern Chess.</h2>
+            <p class="text-gray-300 mb-6 max-w-lg mx-auto leading-relaxed">
+                Real-time matches, deep analysis, custom modes.
+            </p>
+
+            <!-- COUNTDOWN HEADER -->
+            <div class="mb-6">
+                <p class="text-gray-400 text-xs uppercase tracking-[0.2em] mb-1">
+                    Time Countdown
+                </p>
+                <p class="text-white font-semibold text-xl mb-2">
+                    Release Launch
+                </p>
+                <p class="text-gray-400 text-sm">
+                The first hundred will receive  <span class="text-brand font-semibold">12 MONTHS PRO</span>
+                </p>
+            </div>
+
+            <div class="flex justify-center gap-4 mb-10 text-center font-display">
+                <div class="flex flex-col">
+                    <span class="text-3xl md:text-4xl font-bold text-white" id="days">00</span>
+                    <span class="text-xs text-gray-400 uppercase">Days</span>
+                </div>
+                <div class="text-2xl text-gray-600 self-start mt-1">:</div>
+                <div class="flex flex-col">
+                    <span class="text-3xl md:text-4xl font-bold text-white" id="hours">00</span>
+                    <span class="text-xs text-gray-400 uppercase">Hrs</span>
+                </div>
+                <div class="text-2xl text-gray-600 self-start mt-1">:</div>
+                <div class="flex flex-col">
+                    <span class="text-3xl md:text-4xl font-bold text-white" id="minutes">00</span>
+                    <span class="text-xs text-gray-400 uppercase">Mins</span>
+                </div>
+                <div class="text-2xl text-gray-600 self-start mt-1">:</div>
+                <div class="flex flex-col">
+                    <span class="text-3xl md:text-4xl font-bold text-brand" id="seconds">00</span>
+                    <span class="text-xs text-gray-400 uppercase">Secs</span>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700/50 pt-6">
+                 <p class="text-gray-400 text-sm mb-4">Join our community:</p>
+                 <div class="flex flex-wrap justify-center gap-4">
+                     
+                    <a href="https://discord.gg/KsbAhRgzdR"
+                       class="social-link flex items-center justify-center w-12 h-12 rounded-full panel hover:bg-[#5865F2] hover:text-white transition-all duration-300 group"
+                       aria-label="Discord"
+                       target="_blank" rel="noopener noreferrer">
+                       <i class="fa-brands fa-discord text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+
+                    <a href="https://www.youtube.com/channel/UCgqoTPr5gz6NXlX5gMCH4aQ"
+                       class="social-link flex items-center justify-center w-12 h-12 rounded-full panel hover:bg-[#FF0000] hover:text-white transition-all duration-300 group"
+                       aria-label="YouTube"
+                       target="_blank" rel="noopener noreferrer">
+                       <i class="fa-brands fa-youtube text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@metachess.org"
+                       class="social-link flex items-center justify-center w-12 h-12 rounded-full panel hover:bg-[#00f2ea] hover:text-black transition-all duration-300 group"
+                       aria-label="TikTok"
+                       target="_blank" rel="noopener noreferrer">
+                       <i class="fa-brands fa-tiktok text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+
+
+                 </div>
+            </div>
+        </div>
+
+        <footer class="mt-12 text-gray-600 text-sm">
+            <p>&copy; 2025 Hollow Software. All rights reserved.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Countdown Logic
+        const targetDate = new Date('2026-02-16T19:00:00'); 
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000); 
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
