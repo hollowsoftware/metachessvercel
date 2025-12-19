@@ -121,84 +121,6 @@
             height: 20px;
         }
 
-        .language-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 2px;
-            transition: background-color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .language-btn:hover {
-            background-color: #2a2a2a;
-        }
-
-        .language-btn img {
-            width: 24px;
-            height: 16px;
-            object-fit: cover;
-            border: 1px solid #333;
-        }
-
-        .language-dropdown {
-            position: fixed;
-            top: 52px;
-            right: 30px;
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 2px;
-            padding: 0;
-            width: 200px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 1000;
-            overflow: hidden;
-        }
-
-        .language-dropdown.active {
-            display: block;
-        }
-
-        .language-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .language-item {
-            padding: 12px 15px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            border-bottom: 1px solid #282828;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .language-item:last-child {
-            border-bottom: none;
-        }
-
-        .language-item:hover {
-            background-color: #252525;
-        }
-
-        .language-item img {
-            width: 24px;
-            height: 16px;
-            object-fit: cover;
-            border: 1px solid #333;
-        }
-
-        .language-item span {
-            font-size: 14px;
-            color: #ffffff;
-        }
-
         .notification-badge {
             position: absolute;
             top: 4px;
@@ -502,8 +424,7 @@
             .countdown {
                 gap: 10px;
             }
-            .notification-panel,
-            .language-dropdown {
+            .notification-panel {
                 right: 15px;
                 width: calc(100% - 30px);
             }
@@ -516,17 +437,10 @@
 </head>
 <body>
 
-    <!-- Навигационная панель -->
     <div class="navbar">
         <div class="navbar-logo">Metachess.org</div>
         <div class="navbar-right">
             <div class="nav-icons">
-                <button class="language-btn" onclick="toggleLanguageDropdown()">
-                    <img id="currentFlag" src="/flags/gb.png" alt="Language">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 16px; height: 16px;">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
                 <button class="icon-btn" onclick="showUnavailable()">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -540,75 +454,27 @@
                 </button>
             </div>
             <div class="auth-buttons">
-                <button class="btn btn-register" onclick="showUnavailable()" data-i18n="register">Register</button>
-                <button class="btn btn-login" onclick="showUnavailable()" data-i18n="login">Login</button>
+                <button class="btn btn-register" onclick="showUnavailable()">Register</button>
+                <button class="btn btn-login" onclick="showUnavailable()">Login</button>
             </div>
         </div>
     </div>
 
-    <!-- Language Dropdown -->
-    <div class="language-dropdown" id="languageDropdown">
-        <ul class="language-list">
-            <li class="language-item" onclick="changeLanguage('en-GB')">
-                <img src="/flags/gb.png" alt="UK">
-                <span>English (UK)</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('en-US')">
-                <img src="/flags/us.png" alt="USA">
-                <span>English (USA)</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('ru-RU')">
-                <img src="/flags/ru.png" alt="Russia">
-                <span>Русский</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('uk-UA')">
-                <img src="/flags/ua.png" alt="Ukraine">
-                <span>Українська</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('de-DE')">
-                <img src="/flags/de.png" alt="Germany">
-                <span>Deutsch</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('it-IT')">
-                <img src="/flags/it.png" alt="Italy">
-                <span>Italiano</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('fr-FR')">
-                <img src="/flags/fr.png" alt="France">
-                <span>Français</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('pl-PL')">
-                <img src="/flags/pl.png" alt="Poland">
-                <span>Polski</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('ja-JP')">
-                <img src="/flags/jp.png" alt="Japan">
-                <span>日本語</span>
-            </li>
-            <li class="language-item" onclick="changeLanguage('zh-CN')">
-                <img src="/flags/cn.png" alt="China">
-                <span>中文</span>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Панель уведомлений -->
     <div class="notification-panel" id="notificationPanel">
-        <div class="notification-header" data-i18n="notifications">Notifications</div>
+        <div class="notification-header">Notifications</div>
         <ul class="notification-list">
             <li class="notification-item" onclick="window.open('https://docs.metachess.org', '_blank')">
-                <div class="notification-title" data-i18n="notification_title">Documentation is ready!</div>
-                <div class="notification-text" data-i18n="notification_text">Not everything is ready yet, but the documentation page is already available. Click to visit.</div>
+                <div class="notification-title">Documentation is ready!</div>
+                <div class="notification-text">Not everything is ready yet, but the documentation page is already available. Click to visit.</div>
             </li>
         </ul>
     </div>
 
-    <!-- Модальное окно -->
     <div class="modal" id="unavailableModal">
         <div class="modal-content">
-            <h2 data-i18n="unavailable_title">Not available yet</h2>
-            <p data-i18n="unavailable_text">This feature will be available after the platform launch in February 2026.</p>
-            <button class="modal-close" onclick="closeModal()" data-i18n="understood">Got it</button>
+            <h2>Not available yet</h2>
+            <p>This feature will be available after the platform launch in February 2026.</p>
+            <button class="modal-close" onclick="closeModal()">Got it</button>
         </div>
     </div>
 
@@ -629,7 +495,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="time-label" data-i18n="days">Days</span>
+                <span class="time-label">Days</span>
             </div>
 
             <div class="separator">:</div>
@@ -649,7 +515,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="time-label" data-i18n="hours">Hours</span>
+                <span class="time-label">Hours</span>
             </div>
 
             <div class="separator">:</div>
@@ -669,7 +535,7 @@
                         </div>
                     </div>
                 </div>
-                <span class="time-label" data-i18n="minutes">Minutes</span>
+                <span class="time-label">Minutes</span>
             </div>
 
             <div class="separator">:</div>
@@ -689,192 +555,91 @@
                         </div>
                     </div>
                 </div>
-                <span class="time-label" data-i18n="seconds">Seconds</span>
+                <span class="time-label">Seconds</span>
             </div>
         </div>
 
-        <div class="copyright" data-i18n="copyright">
+        <div class="copyright">
             © METACHESS • 2025 Hollow Software. All rights reserved.
         </div>
     </div>
 
     <script>
-        // Translations storage
-        let translations = {};
-        let currentLanguage = localStorage.getItem('language') || 'en-GB';
+        // Target date: February 16, 2026
+        const targetDate = new Date('2026-02-16T00:00:00').getTime();
 
-        // Language to flag mapping
-        const flagMap = {
-            'en-GB': 'gb',
-            'en-US': 'us',
-            'ru-RU': 'ru',
-            'uk-UA': 'ua',
-            'de-DE': 'de',
-            'it-IT': 'it',
-            'fr-FR': 'fr',
-            'pl-PL': 'pl',
-            'ja-JP': 'jp',
-            'zh-CN': 'cn'
-        };
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-        // Load translations
-        async function loadTranslations(lang) {
-            try {
-                const response = await fetch(`/localize/${lang}.json`);
-                translations = await response.json();
-                updatePageContent();
-                updateFlag(lang);
-            } catch (error) {
-                console.error('Failed to load translations:', error);
-                // Fallback to English UK if loading fails
-                if (lang !== 'en-GB') {
-                    loadTranslations('en-GB');
-                }
+            if (distance < 0) {
+                document.querySelector('.countdown').innerHTML = '<h1>LAUNCHED!</h1>';
+                return;
             }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            updateFlipCard('days', days);
+            updateFlipCard('hours', hours);
+            updateFlipCard('minutes', minutes);
+            updateFlipCard('seconds', seconds);
         }
 
-        // Update all translatable content
-        function updatePageContent() {
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[key]) {
-                    element.textContent = translations[key];
-                }
-            });
+        function updateFlipCard(unit, value) {
+            const tens = Math.floor(value / 10);
+            const ones = value % 10;
+
+            updateDigit(`${unit}-tens`, tens);
+            updateDigit(`${unit}-ones`, ones);
         }
 
-        // Update flag icon
-        function updateFlag(lang) {
-            const flagCode = flagMap[lang];
-            document.getElementById('currentFlag').src = `/flags/${flagCode}.png`;
-        }
+        let previousValues = {};
 
-        // Change language
-        function changeLanguage(lang) {
-            currentLanguage = lang;
-            localStorage.setItem('language', lang);
-            loadTranslations(lang);
-            document.getElementById('languageDropdown').classList.remove('active');
-        }
+        function updateDigit(id, newValue) {
+            const card = document.getElementById(id);
+            const front = card.querySelector('.flip-card-inner .flip-face:first-child');
+            const back = card.querySelector('.flip-back');
 
-        // Toggle language dropdown
-        function toggleLanguageDropdown() {
-            const dropdown = document.getElementById('languageDropdown');
-            dropdown.classList.toggle('active');
-            // Close notification panel if open
-            document.getElementById('notificationPanel').classList.remove('active');
+            if (previousValues[id] !== newValue) {
+                back.textContent = newValue;
+                card.classList.add('flipping');
+
+                setTimeout(() => {
+                    front.textContent = newValue;
+                    card.classList.remove('flipping');
+                    card.querySelector('.flip-card-inner').style.transform = 'rotateX(0deg)';
+                }, 600);
+
+                previousValues[id] = newValue;
+            }
         }
 
         function toggleNotifications() {
             const panel = document.getElementById('notificationPanel');
             panel.classList.toggle('active');
-            // Close language dropdown if open
-            document.getElementById('languageDropdown').classList.remove('active');
         }
 
         function showUnavailable() {
-            const modal = document.getElementById('unavailableModal');
-            modal.classList.add('active');
+            document.getElementById('unavailableModal').classList.add('active');
         }
 
         function closeModal() {
-            const modal = document.getElementById('unavailableModal');
-            modal.classList.remove('active');
+            document.getElementById('unavailableModal').classList.remove('active');
         }
 
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function(e) {
             const panel = document.getElementById('notificationPanel');
-            const dropdown = document.getElementById('languageDropdown');
-            const notifBtn = event.target.closest('.icon-btn');
-            const langBtn = event.target.closest('.language-btn');
-            
-            if (!panel.contains(event.target) && !notifBtn && panel.classList.contains('active')) {
+            const btn = e.target.closest('.icon-btn');
+            if (!panel.contains(e.target) && !btn) {
                 panel.classList.remove('active');
             }
-            
-            if (!dropdown.contains(event.target) && !langBtn && dropdown.classList.contains('active')) {
-                dropdown.classList.remove('active');
-            }
         });
 
-        // Close modal when clicking on background
-        document.getElementById('unavailableModal').addEventListener('click', function(event) {
-            if (event.target === this) {
-                closeModal();
-            }
-        });
-
-        // Timer functionality
-        let totalSeconds = (59 * 24 * 60 * 60) + (6 * 60 * 60) + (38 * 60) + 24;
-        
-        const prevValues = {
-            'days-tens': '5',
-            'days-ones': '9',
-            'hours-tens': '0',
-            'hours-ones': '6',
-            'minutes-tens': '3',
-            'minutes-ones': '8',
-            'seconds-tens': '2',
-            'seconds-ones': '4'
-        };
-
-        function flipCard(cardId, newValue) {
-            if (prevValues[cardId] === newValue) {
-                return;
-            }
-            
-            const card = document.getElementById(cardId);
-            const inner = card.querySelector('.flip-card-inner');
-            const faces = card.querySelectorAll('.flip-face');
-            
-            faces[0].textContent = prevValues[cardId];
-            faces[1].textContent = newValue;
-            
-            card.classList.remove('flipping');
-            inner.style.transform = 'rotateX(0deg)';
-            
-            void card.offsetWidth;
-            
-            card.classList.add('flipping');
-            
-            setTimeout(() => {
-                card.classList.remove('flipping');
-                faces[0].textContent = newValue;
-                faces[1].textContent = newValue;
-                inner.style.transform = 'rotateX(0deg)';
-                prevValues[cardId] = newValue;
-            }, 600);
-        }
-
-        function updateTimer() {
-            if (totalSeconds <= 0) return;
-
-            totalSeconds--;
-
-            const days = Math.floor(totalSeconds / (24 * 60 * 60));
-            const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
-            const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-            const seconds = Math.floor(totalSeconds % 60);
-
-            const daysStr = days.toString().padStart(2, '0');
-            const hoursStr = hours.toString().padStart(2, '0');
-            const minutesStr = minutes.toString().padStart(2, '0');
-            const secondsStr = seconds.toString().padStart(2, '0');
-
-            flipCard('days-tens', daysStr[0]);
-            flipCard('days-ones', daysStr[1]);
-            flipCard('hours-tens', hoursStr[0]);
-            flipCard('hours-ones', hoursStr[1]);
-            flipCard('minutes-tens', minutesStr[0]);
-            flipCard('minutes-ones', minutesStr[1]);
-            flipCard('seconds-tens', secondsStr[0]);
-            flipCard('seconds-ones', secondsStr[1]);
-        }
-
-        // Initialize
-        loadTranslations(currentLanguage);
-        setInterval(updateTimer, 1000);
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
