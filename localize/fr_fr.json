@@ -1,0 +1,15 @@
+{
+  "register": "S'inscrire",
+  "login": "Se connecter",
+  "notifications": "Notifications",
+  "notification_title": "La documentation est prête !",
+  "notification_text": "Tout n'est pas encore prêt, mais la page de documentation est déjà disponible. Cliquez pour la visiter.",
+  "unavailable_title": "Pas encore disponible",
+  "unavailable_text": "Cette fonctionnalité sera disponible après le lancement de la plateforme en février 2026.",
+  "understood": "Compris",
+  "days": "Jours",
+  "hours": "Heures",
+  "minutes": "Minutes",
+  "seconds": "Secondes",
+  "copyright": "© METACHESS • 2025 Hollow Software. Tous droits réservés."
+}

@@ -1,0 +1,15 @@
+{
+  "register": "Реєстрація",
+  "login": "Увійти",
+  "notifications": "Сповіщення",
+  "notification_title": "Документація готова!",
+  "notification_text": "Ще не все готово, але сторінка документації вже доступна. Натисніть, щоб відвідати.",
+  "unavailable_title": "Поки недоступно",
+  "unavailable_text": "Ця функція буде доступна після запуску платформи у лютому 2026 року.",
+  "understood": "Зрозуміло",
+  "days": "Дні",
+  "hours": "Години",
+  "minutes": "Хвилини",
+  "seconds": "Секунди",
+  "copyright": "© METACHESS • 2025 Hollow Software. Усі права захищені."
+}

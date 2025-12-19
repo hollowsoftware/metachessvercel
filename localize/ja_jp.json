@@ -1,0 +1,15 @@
+{
+  "register": "登録",
+  "login": "ログイン",
+  "notifications": "通知",
+  "notification_title": "ドキュメントが完成しました!",
+  "notification_text": "まだすべての準備が整っているわけではありませんが、ドキュメントページはすでに利用可能です。クリックして訪問してください。",
+  "unavailable_title": "まだ利用できません",
+  "unavailable_text": "この機能は2026年2月のプラットフォーム起動後に利用可能になります。",
+  "understood": "了解",
+  "days": "日",
+  "hours": "時間",
+  "minutes": "分",
+  "seconds": "秒",
+  "copyright": "© METACHESS • 2025 Hollow Software. All rights reserved."
+}

@@ -1,0 +1,15 @@
+{
+  "register": "Регистрация",
+  "login": "Войти",
+  "notifications": "Уведомления",
+  "notification_title": "Документация готова!",
+  "notification_text": "Ещё не всё готово, но страница документации уже доступна. Нажмите, чтобы посетить.",
+  "unavailable_title": "Пока недоступно",
+  "unavailable_text": "Эта функция будет доступна после запуска платформы в феврале 2026 года.",
+  "understood": "Понятно",
+  "days": "Дни",
+  "hours": "Часы",
+  "minutes": "Минуты",
+  "seconds": "Секунды",
+  "copyright": "© METACHESS • 2025 Hollow Software. Все права защищены."
+}
