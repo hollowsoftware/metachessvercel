@@ -66,12 +66,302 @@
         body {
             background-color: #000000;
             color: #ffffff;
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #0f0e0d;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #222;
+        }
+
+        .navbar-logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 2px;
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            background-color: #2a2a2a;
+        }
+
+        .icon-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 2px;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .language-btn:hover {
+            background-color: #2a2a2a;
+        }
+
+        .language-btn img {
+            width: 24px;
+            height: 16px;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+
+        .language-dropdown {
+            position: fixed;
+            top: 52px;
+            right: 30px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 2px;
+            padding: 0;
+            width: 200px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .language-dropdown.active {
+            display: block;
+        }
+
+        .language-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .language-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #282828;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .language-item:last-child {
+            border-bottom: none;
+        }
+
+        .language-item:hover {
+            background-color: #252525;
+        }
+
+        .language-item img {
+            width: 24px;
+            height: 16px;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+
+        .language-item span {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background-color: #ff4444;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 2px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-register {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid #444;
+        }
+
+        .btn-register:hover {
+            border-color: #666;
+            background-color: #1a1a1a;
+        }
+
+        .btn-login {
+            background-color: #4a9eff;
+            color: #ffffff;
+        }
+
+        .btn-login:hover {
+            background-color: #3a8eef;
+        }
+
+        .notification-panel {
+            position: fixed;
+            top: 52px;
+            right: 30px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 2px;
+            padding: 0;
+            width: 340px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .notification-panel.active {
+            display: block;
+        }
+
+        .notification-header {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+            background-color: #151515;
+        }
+
+        .notification-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .notification-item {
+            background-color: #1a1a1a;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #282828;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item:hover {
+            background-color: #2a2a2a;
+        }
+
+        .notification-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .notification-text {
+            font-size: 13px;
+            color: #aaaaaa;
+            line-height: 1.4;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 2px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .modal-content p {
+            color: #aaaaaa;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            background-color: #4a9eff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .modal-close:hover {
+            background-color: #3a8eef;
+        }
+
+        .main-content {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             gap: 60px;
         }
 
@@ -193,6 +483,9 @@
         }
 
         @media (max-width: 600px) {
+            .navbar {
+                padding: 12px 15px;
+            }
             .flip-card {
                 width: 50px;
                 height: 75px;
@@ -209,96 +502,310 @@
             .countdown {
                 gap: 10px;
             }
+            .notification-panel,
+            .language-dropdown {
+                right: 15px;
+                width: calc(100% - 30px);
+            }
+            .btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="countdown">
-        <div class="time-group">
-            <div class="flip-container">
-                <div class="flip-card" id="days-tens">
-                    <div class="flip-card-inner">
-                        <div class="flip-face">5</div>
-                        <div class="flip-face flip-back">5</div>
-                    </div>
-                </div>
-                <div class="flip-card" id="days-ones">
-                    <div class="flip-card-inner">
-                        <div class="flip-face">9</div>
-                        <div class="flip-face flip-back">9</div>
-                    </div>
-                </div>
+    <!-- Навигационная панель -->
+    <div class="navbar">
+        <div class="navbar-logo">Metachess.org</div>
+        <div class="navbar-right">
+            <div class="nav-icons">
+                <button class="language-btn" onclick="toggleLanguageDropdown()">
+                    <img id="currentFlag" src="/flags/gb.png" alt="Language">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 16px; height: 16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <button class="icon-btn" onclick="showUnavailable()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                <button class="icon-btn" onclick="toggleNotifications()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span class="notification-badge"></span>
+                </button>
             </div>
-            <span class="time-label">Days</span>
-        </div>
-
-        <div class="separator">:</div>
-
-        <div class="time-group">
-            <div class="flip-container">
-                <div class="flip-card" id="hours-tens">
-                    <div class="flip-card-inner">
-                        <div class="flip-face">0</div>
-                        <div class="flip-face flip-back">0</div>
-                    </div>
-                </div>
-                <div class="flip-card" id="hours-ones">
-                    <div class="flip-card-inner">
-                        <div class="flip-face">6</div>
-                        <div class="flip-face flip-back">6</div>
-                    </div>
-                </div>
+            <div class="auth-buttons">
+                <button class="btn btn-register" onclick="showUnavailable()" data-i18n="register">Register</button>
+                <button class="btn btn-login" onclick="showUnavailable()" data-i18n="login">Login</button>
             </div>
-            <span class="time-label">Hours</span>
-        </div>
-
-        <div class="separator">:</div>
-
-        <div class="time-group">
-            <div class="flip-container">
-                <div class="flip-card" id="minutes-tens">
-                    <div class="flip-card-inner">
-                        <div class="flip-face">3</div>
-                        <div class="flip-face flip-back">3</div>
-                    </div>
-                </div>
-                <div class="flip-card" id="minutes-ones">
-                    <div class="flip-card-inner">
-                        <div class="flip-face">8</div>
-                        <div class="flip-face flip-back">8</div>
-                    </div>
-                </div>
-            </div>
-            <span class="time-label">Minutes</span>
-        </div>
-
-        <div class="separator">:</div>
-
-        <div class="time-group">
-            <div class="flip-container">
-                <div class="flip-card" id="seconds-tens">
-                    <div class="flip-card-inner">
-                        <div class="flip-face">2</div>
-                        <div class="flip-face flip-back">2</div>
-                    </div>
-                </div>
-                <div class="flip-card" id="seconds-ones">
-                    <div class="flip-card-inner">
-                        <div class="flip-face">4</div>
-                        <div class="flip-face flip-back">4</div>
-                    </div>
-                </div>
-            </div>
-            <span class="time-label">Seconds</span>
         </div>
     </div>
 
-    <div class="copyright">
-        © METACHESS • 2025 Hollow Software. All rights reserved.
+    <!-- Language Dropdown -->
+    <div class="language-dropdown" id="languageDropdown">
+        <ul class="language-list">
+            <li class="language-item" onclick="changeLanguage('en-GB')">
+                <img src="/flags/gb.png" alt="UK">
+                <span>English (UK)</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('en-US')">
+                <img src="/flags/us.png" alt="USA">
+                <span>English (USA)</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('ru-RU')">
+                <img src="/flags/ru.png" alt="Russia">
+                <span>Русский</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('uk-UA')">
+                <img src="/flags/ua.png" alt="Ukraine">
+                <span>Українська</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('de-DE')">
+                <img src="/flags/de.png" alt="Germany">
+                <span>Deutsch</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('it-IT')">
+                <img src="/flags/it.png" alt="Italy">
+                <span>Italiano</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('fr-FR')">
+                <img src="/flags/fr.png" alt="France">
+                <span>Français</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('pl-PL')">
+                <img src="/flags/pl.png" alt="Poland">
+                <span>Polski</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('ja-JP')">
+                <img src="/flags/jp.png" alt="Japan">
+                <span>日本語</span>
+            </li>
+            <li class="language-item" onclick="changeLanguage('zh-CN')">
+                <img src="/flags/cn.png" alt="China">
+                <span>中文</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Панель уведомлений -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="notification-header" data-i18n="notifications">Notifications</div>
+        <ul class="notification-list">
+            <li class="notification-item" onclick="window.open('https://docs.metachess.org', '_blank')">
+                <div class="notification-title" data-i18n="notification_title">Documentation is ready!</div>
+                <div class="notification-text" data-i18n="notification_text">Not everything is ready yet, but the documentation page is already available. Click to visit.</div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="unavailableModal">
+        <div class="modal-content">
+            <h2 data-i18n="unavailable_title">Not available yet</h2>
+            <p data-i18n="unavailable_text">This feature will be available after the platform launch in February 2026.</p>
+            <button class="modal-close" onclick="closeModal()" data-i18n="understood">Got it</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="countdown">
+            <div class="time-group">
+                <div class="flip-container">
+                    <div class="flip-card" id="days-tens">
+                        <div class="flip-card-inner">
+                            <div class="flip-face">5</div>
+                            <div class="flip-face flip-back">5</div>
+                        </div>
+                    </div>
+                    <div class="flip-card" id="days-ones">
+                        <div class="flip-card-inner">
+                            <div class="flip-face">9</div>
+                            <div class="flip-face flip-back">9</div>
+                        </div>
+                    </div>
+                </div>
+                <span class="time-label" data-i18n="days">Days</span>
+            </div>
+
+            <div class="separator">:</div>
+
+            <div class="time-group">
+                <div class="flip-container">
+                    <div class="flip-card" id="hours-tens">
+                        <div class="flip-card-inner">
+                            <div class="flip-face">0</div>
+                            <div class="flip-face flip-back">0</div>
+                        </div>
+                    </div>
+                    <div class="flip-card" id="hours-ones">
+                        <div class="flip-card-inner">
+                            <div class="flip-face">6</div>
+                            <div class="flip-face flip-back">6</div>
+                        </div>
+                    </div>
+                </div>
+                <span class="time-label" data-i18n="hours">Hours</span>
+            </div>
+
+            <div class="separator">:</div>
+
+            <div class="time-group">
+                <div class="flip-container">
+                    <div class="flip-card" id="minutes-tens">
+                        <div class="flip-card-inner">
+                            <div class="flip-face">3</div>
+                            <div class="flip-face flip-back">3</div>
+                        </div>
+                    </div>
+                    <div class="flip-card" id="minutes-ones">
+                        <div class="flip-card-inner">
+                            <div class="flip-face">8</div>
+                            <div class="flip-face flip-back">8</div>
+                        </div>
+                    </div>
+                </div>
+                <span class="time-label" data-i18n="minutes">Minutes</span>
+            </div>
+
+            <div class="separator">:</div>
+
+            <div class="time-group">
+                <div class="flip-container">
+                    <div class="flip-card" id="seconds-tens">
+                        <div class="flip-card-inner">
+                            <div class="flip-face">2</div>
+                            <div class="flip-face flip-back">2</div>
+                        </div>
+                    </div>
+                    <div class="flip-card" id="seconds-ones">
+                        <div class="flip-card-inner">
+                            <div class="flip-face">4</div>
+                            <div class="flip-face flip-back">4</div>
+                        </div>
+                    </div>
+                </div>
+                <span class="time-label" data-i18n="seconds">Seconds</span>
+            </div>
+        </div>
+
+        <div class="copyright" data-i18n="copyright">
+            © METACHESS • 2025 Hollow Software. All rights reserved.
+        </div>
     </div>
 
     <script>
+        // Translations storage
+        let translations = {};
+        let currentLanguage = localStorage.getItem('language') || 'en-GB';
+
+        // Language to flag mapping
+        const flagMap = {
+            'en-GB': 'gb',
+            'en-US': 'us',
+            'ru-RU': 'ru',
+            'uk-UA': 'ua',
+            'de-DE': 'de',
+            'it-IT': 'it',
+            'fr-FR': 'fr',
+            'pl-PL': 'pl',
+            'ja-JP': 'jp',
+            'zh-CN': 'cn'
+        };
+
+        // Load translations
+        async function loadTranslations(lang) {
+            try {
+                const response = await fetch(`/localize/${lang}.json`);
+                translations = await response.json();
+                updatePageContent();
+                updateFlag(lang);
+            } catch (error) {
+                console.error('Failed to load translations:', error);
+                // Fallback to English UK if loading fails
+                if (lang !== 'en-GB') {
+                    loadTranslations('en-GB');
+                }
+            }
+        }
+
+        // Update all translatable content
+        function updatePageContent() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[key]) {
+                    element.textContent = translations[key];
+                }
+            });
+        }
+
+        // Update flag icon
+        function updateFlag(lang) {
+            const flagCode = flagMap[lang];
+            document.getElementById('currentFlag').src = `/flags/${flagCode}.png`;
+        }
+
+        // Change language
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            loadTranslations(lang);
+            document.getElementById('languageDropdown').classList.remove('active');
+        }
+
+        // Toggle language dropdown
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.toggle('active');
+            // Close notification panel if open
+            document.getElementById('notificationPanel').classList.remove('active');
+        }
+
+        function toggleNotifications() {
+            const panel = document.getElementById('notificationPanel');
+            panel.classList.toggle('active');
+            // Close language dropdown if open
+            document.getElementById('languageDropdown').classList.remove('active');
+        }
+
+        function showUnavailable() {
+            const modal = document.getElementById('unavailableModal');
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('unavailableModal');
+            modal.classList.remove('active');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const panel = document.getElementById('notificationPanel');
+            const dropdown = document.getElementById('languageDropdown');
+            const notifBtn = event.target.closest('.icon-btn');
+            const langBtn = event.target.closest('.language-btn');
+            
+            if (!panel.contains(event.target) && !notifBtn && panel.classList.contains('active')) {
+                panel.classList.remove('active');
+            }
+            
+            if (!dropdown.contains(event.target) && !langBtn && dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Close modal when clicking on background
+        document.getElementById('unavailableModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        // Timer functionality
         let totalSeconds = (59 * 24 * 60 * 60) + (6 * 60 * 60) + (38 * 60) + 24;
         
         const prevValues = {
@@ -365,6 +872,8 @@
             flipCard('seconds-ones', secondsStr[1]);
         }
 
+        // Initialize
+        loadTranslations(currentLanguage);
         setInterval(updateTimer, 1000);
     </script>
 </body>
