@@ -55,213 +55,317 @@
       }
     }
     </script>
-    
-    <meta http-equiv="Content-Security-Policy"
-          content="
-          default-src 'self';
-          script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;
-          style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
-          font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com;
-          img-src 'self' data: https:;
-          ">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Orbitron', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            light: '#60a5fa',
-                            DEFAULT: '#3b82f6',
-                            dark: '#2563eb',
-                        }
-                    },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                        'fade-in': 'fadeIn 1.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 
     <style>
-        :root {
-            --bg-body: #0f0e0d;
-            --bg-panel: #1a1918;
-            --border-light: rgba(255, 255, 255, 0.06);
-            --accent-blue: #3b82f6;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        
+
         body {
-            background-color: var(--bg-body);
+            background-color: #000000;
             color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        
-        .panel {
-            background: var(--bg-panel);
-            border: 1px solid var(--border-light);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-        }
-
-        .gradient-bg {
-            background: radial-gradient(circle at center, #161514 0%, #0f0e0d 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            gap: 60px;
         }
 
-        .social-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-            border-color: var(--accent-blue);
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .time-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .flip-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .flip-card {
+            position: relative;
+            width: 120px;
+            height: 180px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg);
+        }
+
+        .flip-card.flipping .flip-card-inner {
+            animation: flipDown 0.6s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+        }
+
+        @keyframes flipDown {
+            0% {
+                transform: rotateX(0deg);
+            }
+            100% {
+                transform: rotateX(-180deg);
+            }
+        }
+
+        .flip-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: #2a2a2a;
+            border-radius: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            font-weight: 700;
+            color: #ffffff;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .flip-face::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #000000;
+            z-index: 1;
+        }
+
+        .flip-back {
+            transform: rotateX(180deg);
+        }
+
+        .time-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #666666;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .separator {
+            font-size: 60px;
+            color: #444444;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #444444;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 900px) {
+            .flip-card {
+                width: 80px;
+                height: 120px;
+            }
+            .flip-face {
+                font-size: 80px;
+            }
+            .separator {
+                font-size: 40px;
+            }
+            .countdown {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .flip-card {
+                width: 50px;
+                height: 75px;
+            }
+            .flip-face {
+                font-size: 50px;
+            }
+            .time-label {
+                font-size: 10px;
+            }
+            .separator {
+                display: none;
+            }
+            .countdown {
+                gap: 10px;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center relative gradient-bg">
+<body>
 
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-1/4 left-1/2 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    <div class="countdown">
+        <div class="time-group">
+            <div class="flip-container">
+                <div class="flip-card" id="days-tens">
+                    <div class="flip-card-inner">
+                        <div class="flip-face">5</div>
+                        <div class="flip-face flip-back">5</div>
+                    </div>
+                </div>
+                <div class="flip-card" id="days-ones">
+                    <div class="flip-card-inner">
+                        <div class="flip-face">9</div>
+                        <div class="flip-face flip-back">9</div>
+                    </div>
+                </div>
+            </div>
+            <span class="time-label">Days</span>
+        </div>
+
+        <div class="separator">:</div>
+
+        <div class="time-group">
+            <div class="flip-container">
+                <div class="flip-card" id="hours-tens">
+                    <div class="flip-card-inner">
+                        <div class="flip-face">0</div>
+                        <div class="flip-face flip-back">0</div>
+                    </div>
+                </div>
+                <div class="flip-card" id="hours-ones">
+                    <div class="flip-card-inner">
+                        <div class="flip-face">6</div>
+                        <div class="flip-face flip-back">6</div>
+                    </div>
+                </div>
+            </div>
+            <span class="time-label">Hours</span>
+        </div>
+
+        <div class="separator">:</div>
+
+        <div class="time-group">
+            <div class="flip-container">
+                <div class="flip-card" id="minutes-tens">
+                    <div class="flip-card-inner">
+                        <div class="flip-face">3</div>
+                        <div class="flip-face flip-back">3</div>
+                    </div>
+                </div>
+                <div class="flip-card" id="minutes-ones">
+                    <div class="flip-card-inner">
+                        <div class="flip-face">8</div>
+                        <div class="flip-face flip-back">8</div>
+                    </div>
+                </div>
+            </div>
+            <span class="time-label">Minutes</span>
+        </div>
+
+        <div class="separator">:</div>
+
+        <div class="time-group">
+            <div class="flip-container">
+                <div class="flip-card" id="seconds-tens">
+                    <div class="flip-card-inner">
+                        <div class="flip-face">2</div>
+                        <div class="flip-face flip-back">2</div>
+                    </div>
+                </div>
+                <div class="flip-card" id="seconds-ones">
+                    <div class="flip-card-inner">
+                        <div class="flip-face">4</div>
+                        <div class="flip-face flip-back">4</div>
+                    </div>
+                </div>
+            </div>
+            <span class="time-label">Seconds</span>
+        </div>
     </div>
 
-    <main class="w-full max-w-3xl p-6 mx-auto text-center z-10 animate-fade-in">
-        
-        <div class="mb-8">
-            <h1 class="text-4xl md:text-6xl font-display font-black tracking-wider text-white mb-2">
-                META<span class="text-brand">CHESS</span>
-            </h1>
-            <p class="text-gray-400 text-sm tracking-[0.3em] uppercase font-semibold">HOLLOW SOFTWARE</p>
-        </div>
-
-        <div class="panel rounded-2xl p-8 md:p-12 shadow-2xl">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-white">Modern Chess.</h2>
-            <p class="text-gray-300 mb-6 max-w-lg mx-auto leading-relaxed">
-                Real-time matches, deep analysis, custom modes.
-            </p>
-
-            <!-- COUNTDOWN HEADER -->
-            <div class="mb-6">
-                <p class="text-gray-400 text-xs uppercase tracking-[0.2em] mb-1">
-                    Time Countdown
-                </p>
-                <p class="text-white font-semibold text-xl mb-2">
-                    Release Launch
-                </p>
-                <p class="text-gray-400 text-sm">
-                The first hundred will receive  <span class="text-brand font-semibold">12 MONTHS PRO</span>
-                </p>
-            </div>
-
-            <div class="flex justify-center gap-4 mb-10 text-center font-display">
-                <div class="flex flex-col">
-                    <span class="text-3xl md:text-4xl font-bold text-white" id="days">00</span>
-                    <span class="text-xs text-gray-400 uppercase">Days</span>
-                </div>
-                <div class="text-2xl text-gray-600 self-start mt-1">:</div>
-                <div class="flex flex-col">
-                    <span class="text-3xl md:text-4xl font-bold text-white" id="hours">00</span>
-                    <span class="text-xs text-gray-400 uppercase">Hrs</span>
-                </div>
-                <div class="text-2xl text-gray-600 self-start mt-1">:</div>
-                <div class="flex flex-col">
-                    <span class="text-3xl md:text-4xl font-bold text-white" id="minutes">00</span>
-                    <span class="text-xs text-gray-400 uppercase">Mins</span>
-                </div>
-                <div class="text-2xl text-gray-600 self-start mt-1">:</div>
-                <div class="flex flex-col">
-                    <span class="text-3xl md:text-4xl font-bold text-brand" id="seconds">00</span>
-                    <span class="text-xs text-gray-400 uppercase">Secs</span>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-700/50 pt-6">
-                 <p class="text-gray-400 text-sm mb-4">Join our community:</p>
-                 <div class="flex flex-wrap justify-center gap-4">
-                     
-                    <a href="https://discord.gg/KsbAhRgzdR"
-                       class="social-link flex items-center justify-center w-12 h-12 rounded-full panel hover:bg-[#5865F2] hover:text-white transition-all duration-300 group"
-                       aria-label="Discord"
-                       target="_blank" rel="noopener noreferrer">
-                       <i class="fa-brands fa-discord text-xl group-hover:scale-110 transition-transform"></i>
-                    </a>
-
-                    <a href="https://www.youtube.com/channel/UCgqoTPr5gz6NXlX5gMCH4aQ"
-                       class="social-link flex items-center justify-center w-12 h-12 rounded-full panel hover:bg-[#FF0000] hover:text-white transition-all duration-300 group"
-                       aria-label="YouTube"
-                       target="_blank" rel="noopener noreferrer">
-                       <i class="fa-brands fa-youtube text-xl group-hover:scale-110 transition-transform"></i>
-                    </a>
-
-                    <a href="https://www.tiktok.com/@metachess.org"
-                       class="social-link flex items-center justify-center w-12 h-12 rounded-full panel hover:bg-[#00f2ea] hover:text-black transition-all duration-300 group"
-                       aria-label="TikTok"
-                       target="_blank" rel="noopener noreferrer">
-                       <i class="fa-brands fa-tiktok text-xl group-hover:scale-110 transition-transform"></i>
-                    </a>
-
-
-                 </div>
-            </div>
-        </div>
-
-        <footer class="mt-12 text-gray-600 text-sm">
-            <p>&copy; 2025 Hollow Software. All rights reserved.</p>
-        </footer>
-
-    </main>
+    <div class="copyright">
+        © METACHESS • 2025 Hollow Software. All rights reserved.
+    </div>
 
     <script>
-        // Countdown Logic
-        const targetDate = new Date('2026-02-16T19:00:00'); 
+        let totalSeconds = (59 * 24 * 60 * 60) + (6 * 60 * 60) + (38 * 60) + 24;
         
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+        const prevValues = {
+            'days-tens': '5',
+            'days-ones': '9',
+            'hours-tens': '0',
+            'hours-ones': '6',
+            'minutes-tens': '3',
+            'minutes-ones': '8',
+            'seconds-tens': '2',
+            'seconds-ones': '4'
+        };
 
-            if (distance < 0) {
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
+        function flipCard(cardId, newValue) {
+            if (prevValues[cardId] === newValue) {
                 return;
             }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000); 
-
-            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            
+            const card = document.getElementById(cardId);
+            const inner = card.querySelector('.flip-card-inner');
+            const faces = card.querySelectorAll('.flip-face');
+            
+            faces[0].textContent = prevValues[cardId];
+            faces[1].textContent = newValue;
+            
+            card.classList.remove('flipping');
+            inner.style.transform = 'rotateX(0deg)';
+            
+            void card.offsetWidth;
+            
+            card.classList.add('flipping');
+            
+            setTimeout(() => {
+                card.classList.remove('flipping');
+                faces[0].textContent = newValue;
+                faces[1].textContent = newValue;
+                inner.style.transform = 'rotateX(0deg)';
+                prevValues[cardId] = newValue;
+            }, 600);
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        function updateTimer() {
+            if (totalSeconds <= 0) return;
+
+            totalSeconds--;
+
+            const days = Math.floor(totalSeconds / (24 * 60 * 60));
+            const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+            const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+
+            const daysStr = days.toString().padStart(2, '0');
+            const hoursStr = hours.toString().padStart(2, '0');
+            const minutesStr = minutes.toString().padStart(2, '0');
+            const secondsStr = seconds.toString().padStart(2, '0');
+
+            flipCard('days-tens', daysStr[0]);
+            flipCard('days-ones', daysStr[1]);
+            flipCard('hours-tens', hoursStr[0]);
+            flipCard('hours-ones', hoursStr[1]);
+            flipCard('minutes-tens', minutesStr[0]);
+            flipCard('minutes-ones', minutesStr[1]);
+            flipCard('seconds-tens', secondsStr[0]);
+            flipCard('seconds-ones', secondsStr[1]);
+        }
+
+        setInterval(updateTimer, 1000);
     </script>
 </body>
 </html>
